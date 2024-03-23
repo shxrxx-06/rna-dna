@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GeneProtect</title>
+    
+</head>
+<body>
+    <h1>GeneProtect</h1>
+    <hr>
+    <img src="{{ url_for('static', filename='images/l.jpg') }}" />
+    <h2>Securely protect your DNA & RNA Data</h2>
+    <p>Use exclusive technology for your data</p>
+    <button onclick="location.href='/account'">Sign Up</button>
+    <button onclick="location.href='/login'">Log In</button>
+    <hr>
+    <h2>Why use GeneProtect?</h2>
+    <p>Nucleus provides a secure and reliable way to store your DNA and RNA data</p>
+    <div class="grid grid-cols-2 gap-4 place-items-start">
+      <img src="{{ url_for('static', filename='images/p.jpg') }}" />
+      <img src="{{ url_for('static', filename='images/q.jpg') }}" />
+      <img src="{{ url_for('static', filename='images/c.jpg') }}" />
+      <img src="{{ url_for('static', filename='images/t.jpg') }}" />
+    </div>
+</body>
+</html>
