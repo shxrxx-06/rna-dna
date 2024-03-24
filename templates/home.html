@@ -2,24 +2,80 @@
 <html>
 <head>
     <title>GeneProtect</title>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        .space-grotesk-font {
+            font-family: "Space Grotesk", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <h1>GeneProtect</h1>
+    <nav class="w-full h-16 flex items-center justify-items-start">
+        <p class="ml-6 text-2xl font-bold" >GeneProtect</p>
+    </nav>
     <hr>
-    <img src="{{ url_for('static', filename='images/l.jpg') }}" />
-    <h2>Securely protect your DNA & RNA Data</h2>
-    <p>Use exclusive technology for your data</p>
-    <button onclick="location.href='/account'">Sign Up</button>
-    <button onclick="location.href='/login'">Log In</button>
-    <hr>
-    <h2>Why use GeneProtect?</h2>
-    <p>Nucleus provides a secure and reliable way to store your DNA and RNA data</p>
-    <div class="grid grid-cols-2 gap-4 place-items-start">
-      <img src="{{ url_for('static', filename='images/p.jpg') }}" />
-      <img src="{{ url_for('static', filename='images/q.jpg') }}" />
-      <img src="{{ url_for('static', filename='images/c.jpg') }}" />
-      <img src="{{ url_for('static', filename='images/t.jpg') }}" />
+    <div class="flex flex-col items-center justify-items-center">
+        <div class="bg-[url({{ url_for('static', filename='images/l.jpg') }})] bg-cover w-[700px] h-[640px] mt-20 rounded-lg">
+            <div class="p-10 mt-60">
+                <p class="text-7xl text-white text-pretty font-bold">Securely store your DNA & RNA Data</p>
+                <p class="text-white mt-2">Use the most advanced encryption technology to keep your data safe and secure</p>
+                <div class="mt-5">
+                    <button class="bg-sky-500 text-white px-4 py-3 rounded-lg" onclick="location.href='/account'">Sign Up</button>
+                    <button class="text-black px-4 py-3 rounded-lg bg-white" onclick="location.href='/login'">Log In</button>
+                </div>
+            </div>
+        </div>
+        <div class="my-16">
+            <p class="space-grotesk-font text-5xl font-black block">Why use GeneProtect?</p>
+            <p class="space-grotesk-font text-xl mt-5 block">Nucleus provides a secure and reliable way to store your DNA and RNA data</p>
+        </div>
+        <div class="grid grid-cols-2 gap-4 place-items-start mx-24">
+            <img src="{{ url_for('static', filename='images/p.jpg') }}" class="w-96 h-48 rounded-lg"/>
+            <img src="{{ url_for('static', filename='images/q.jpg') }}" class="w-96 h-48 rounded-lg"/>
+            <img src="{{ url_for('static', filename='images/c.jpg') }}" class="w-96 h-48 rounded-lg"/>
+            <img src="{{ url_for('static', filename='images/t.jpg') }}" class="w-96 h-48 rounded-lg"/>
+        </div>
+        <div class="my-40">
+            <p class="text-2xl font-bold text-center">Create an account</p>
+            <form class="my-5 flex flex-col space-y-5">
+                <div class="flex flex-col">
+                    <label class="" for="first_name">First name</label>
+                    <input name="first_name" id="first_name" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder="John"/>
+                </div>
+                <div class="flex flex-col">
+                    <label for="last_name">Last name</label>
+                    <input name="last_name" id="last_name" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder="Doe"/>
+                </div>
+                <div class="flex flex-col">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder="johndoe@gmail.com"/>
+                </div>
+                <div class="flex flex-col">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder=""/>
+                </div>
+                <div class="flex flex-col">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" name="confirm_password" id="confirm_password" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder=""/>
+                </div>
+                <div class="flex flex-row">
+                    <input type="checkbox"  id="agree"/>
+                    <label for="agree" class="whitespace-pre" value="agree"> I agree to the Terms of Service and Privacy Policy.</label>
+                </div>
+                <div class="flex justify-end">
+                    <button class="bg-blue-500 text-white px-5 py-3 rounded-lg">Create Account</button>
+                </div>
+            </form>
+            <div class="flex flex-col items-center justify-items-center mt-16">
+                <p class="text-gray-400">Already have an account?</p>
+                <a href="#" class="text-gray-400 mt-4">Sign in</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>
