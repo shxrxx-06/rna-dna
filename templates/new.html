@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Database</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="flex">
+        <section class="w-96 h-screen flex flex-col justify-between">
+            <div class="mt-8 mx-5 text-xl">
+                <p class="font-bold">DNA & RNA</p>
+                <nav class="flex flex-col space-y-5 pl-5 mt-5">
+                    <a class="px-3 py-1" href="#">Home</a>
+                    <a class="px-3 py-1" href="#">Vault</a>
+                    <a class="px-3 py-1" href="#">Encryption</a>
+                    <a class="px-3 py-1" href="#">Keys</a>
+                    <a class="px-3 py-1" href="#">Jobs</a>
+                    <a class="px-3 py-1" href="#">Settings</a>
+                </nav>
+            </div>
+            <div class="flex flex-col mx-5 text-xl space-y-3 my-8 pl-5">
+                <a class="bg-gray-200/80 px-3 py-1 rounded-lg" href="#"><i class="fa-solid fa-plus"></i> New Database</a>
+                <a class="px-3" href="#"><i class="fa-solid fa-plus"></i> New Folder</a>
+            </div>
+        </section>
+        <section class="w-full h-screen text-xl">
+            <div class="my-40">
+                <p class="text-2xl font-bold text-center">Upload your DNA & RNA sequences</p>
+                <p class="text-white mt-2">Start using the world's most advanced RNA & DNA sequences </p>
+                <form class="my-5 flex flex-col space-y-5">
+                    <div class="flex flex-col">
+                        <label class="" for="project_name">Project Name</label>
+                        <input name="project_name" id="project_name" class="border-solid border-2 border-gray-200 rounded-lg px-3 h-10" placeholder="Project Name"/>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="description">Description</label>
+                        <input name="description" id="description" class="border-solid border-2 border-gray-200 rounded-lg px-3 h-10" placeholder="Description for the project"/>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="notes">Notes</label>
+                        <input type="notes"  id="notes" class="border-solid border-2 border-gray-200 rounded-lg px-3 h-40" placeholder="Notes for the project"/>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="sequence_file">Sequence File</label>
+                        <input type="sequence_file"  id="sequence_file" class="border-solid border-2 border-gray-200 rounded-lg px-3 h-40" placeholder="Paste your sequence here"/>
+                    </div>
+                    <div class="flex justify-center">
+                        <button class="bg-blue-500 text-white px-5 py-3 rounded-lg" onclick="location.href='/encrypt'">Upload</button>
+                    </div>
+                </form>
+        </section>
+    </div>
+</body>
+</html>

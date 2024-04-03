@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="flex">
+        <section class="w-96 h-screen flex flex-col justify-between">
+            <div class="mt-8 mx-5 text-xl">
+                <p class="font-bold">DNA & RNA</p>
+                <nav class="flex flex-col space-y-5 pl-5 mt-5">
+                    <a class="px-3 py-1" href="#">Home</a>
+                    <a class="bg-gray-200/80 px-3 py-1 rounded-lg" href="#">Vault</a>
+                    <a class="px-3 py-1" href="#">Encryption</a>
+                    <a class="px-3 py-1" href="#">Keys</a>
+                    <a class="px-3 py-1" href="#">Jobs</a>
+                    <a class="px-3 py-1" href="#">Settings</a>
+                </nav>
+            </div>
+            <div class="flex flex-col mx-5 text-xl space-y-3 my-8 pl-5">
+                <a class="px-3" href="#" onclick="location.href='/new'"><i class="fa-solid fa-plus"></i> New Database</a>
+                <a class="px-3" href="#"><i class="fa-solid fa-plus"></i> New Folder</a>
+            </div>
+        </section>
+        <section class="w-full h-screen text-xl">
+            <div class="mx-10 mt-8">
+                <p class="text-2xl font-bold">Databases</p>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400 mt-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                        </svg>
+                    </div>
+                    <input class="ps-10 w-full rounded-lg h-10 px-4 mt-4 bg-gray-200/80 text-black" placeholder="Search databases" />
+                </div>
+                <div class="my-5">
+                    <nav class="flex flex-row space-x-5 my-2">
+                        <a class="font-bold" href="#">All</a>
+                        <a class="text-gray-400" href="#">Favorites</a>
+                        <a class="text-gray-400" href="#">Archived</a>
+                    </nav>
+                    <hr />
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

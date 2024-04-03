@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+    <title>GeneProtect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .space-grotesk-font {
+            font-family: "Space Grotesk", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+        .grey-box {
+           border: 2px solid grey; /* Grey outline */
+            padding: 20px; /* Spacing inside the box */
+            margin: 20px; /* Spacing outside the box */
+        }
+       .bold-text {
+           font-weight: bold; /* Bold text for 'Secure by default' */
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <hr>
+    <div class="flex flex-col items-center justify-items-center">
+        <div class="bg-[url({{ url_for('static', filename='images/z.jpg') }})] bg-cover w-[700px] h-[540px] mt-20 rounded-lg">
+            <div class="p-10 mt-60">
+                <p class="text-7xl text-white text-pretty font-bold">GeneVault</p>
+                <p class="text-white mt-2">Secure DNA & RNA data with encryption</p>
+                <div class="mt-5">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-500 dark:text-gray-400 mt-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            </svg>
+                        </div>
+                        <input class="ps-10 w-full rounded-lg h-10 px-4 mt-4 bg-black-200/80 text-black" placeholder="Search for your encrypted data" />
+                    </div>
+                    <br>
+                    <div class="flex justify-end">
+                       <button class="text-white px-4 py-2 rounded-lg bg-blue-500">Fetch</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <p class="text-5xl text-black text-pretty font-bold">A new way to secure your genetic data.</p>
+        <br>
+        <div class = "my-5 flex flex-col space-y-5">
+            <p class="text-2xl text-black text-pretty font-bold mt-2">Features</p>
+            <p class ="text-black mt-16">GenVault is built on the latest security standards too keep your genetic data safe</p>
+            <br>
+        </div>
+        <br>
+        <div class="border-solid border-2 border-gray-300 rounded-lg px-6 h-20">
+            <span class="checkmark">&#10004;&#65039;</span>
+            <div class="text-content">
+                <p class="text-black font-bold">Secure by default</p>
+                <p class ="text-grey-400">Data is encrypted at rest and in transit and only accesible with your private key.</p>
+            </div>
+        </div>
+        <div class = "my-5 flex flex-col space-y-5">
+            <p class="text-2xl text-black text-pretty font-bold mt-8">Privacy First</p>
+            <p class ="text-black mt-16">We believe that your genetic data is yours alone.We never have access to your encrypted genetic data.</p>
+            <br>        
+        </div>
+        <br>
+        <div class="border-solid border-2 border-gray-300 rounded-lg px-6 h-20">
+            <span class="locked">&#128274;</span>
+            <div class="text-content">
+                <p class="text-black font-bold">Private</p>
+                <p class ="text-grey-400">Your data is yours alone.We never have access to your encrypted data.</p>
+                <br>
+            </div>
+        </div>
+        <div class = "my-5 flex flex-col space-y-5">
+            <p class="text-2xl text-black text-pretty font-bold mt-2">Control your data</p>
+            <p class ="text-black mt-16"> You decide who can access your data for how long.You can share access with others such as researchers or family members.</p>
+        </div>
+        <br>
+        <div class="border-solid border-2 border-gray-300 rounded-lg px-6 h-20">
+            <span class="key">&#128273;</span>
+            <div class="text-content">
+                <p class="text-black font-bold">Controlled acess</p>
+                <p class ="text-grey-400">You can share access to your data with others such as researchers or family members.</p>
+            </div>
+            <br>
+        </div>
+    </div>
+</body>
+</html>

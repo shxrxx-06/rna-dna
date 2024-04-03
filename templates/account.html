@@ -1,22 +1,57 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>GeneProtect</title>
-</head>
+    <head>
+        <title>GeneProtect</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+        <style>
+            .space-grotesk-font {
+                font-family: "Space Grotesk", sans-serif;
+                font-optical-sizing: auto;
+                font-style: normal;
+            }
+        </style>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
 <body>
-    <h1>GeneProtect</h1>
-    <hr>
-    <img src="images/l.jpg" alt="Landscape">
-    <h2>Securely protect your DNA & RNA Data</h2>
-    <p>Use exclusive technology for your data</p>
-    <button onclick="location.href='/account'">Sign Up</button>
-    <button onclick="location.href='/login'">Log In</button>
-    <hr>
-    <h2>Why use GeneProtect?</h2>
-    <p>Nucleus provides a secure and reliable way to store your DNA and RNA data</p>
-    <img src="images/p.jpg" alt="Image P">
-    <img src="images/q.jpg" alt="Image Q">
-    <img src="images/c.jpg" alt="Image C">
-    <img src="images/t.jpg" alt="Image T">
+    <div class="flex flex-col items-center justify-items-center"></div>
+       <div class="my-40">
+          <p class="text-2xl font-bold text-center">Create an account</p>
+          <form class="my-5 flex flex-col space-y-5" method="POST" action="">
+            <div class="flex flex-col">
+                <label class="" for="first_name">First name</label>
+                <input name="first_name" id="first_name" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder="John"/>
+            </div>
+            <div class="flex flex-col">
+                <label for="last_name">Last name</label>
+                <input name="last_name" id="last_name" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder="Doe"/>
+            </div>
+            <div class="flex flex-col">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder="johndoe@gmail.com"/>
+            </div>
+            <div class="flex flex-col">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder=""/>
+            </div>
+            <div class="flex flex-col">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" name="confirm_password" id="confirm_password" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder=""/>
+            </div>
+            <div class="flex flex-row">
+                <input type="checkbox"  id="agree"/>
+                <label for="agree" class="whitespace-pre" value="agree"> I agree to the Terms of Service and Privacy Policy.</label>
+            </div>
+            <div class="flex justify-end">
+                <button class="bg-blue-500 text-white px-5 py-3 rounded-lg" onclick="location.href='/database'">Create Account</button>
+            </div>
+          </form>
+            <div class="flex flex-col items-center justify-items-center mt-16">
+               <p class="text-gray-400">Already have an account?</p>
+               <a href="#" class="text-gray-400 mt-4" onclick="location.href='/login'">Sign in</a>
+            </div>
+       </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeneProtect</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+        <style>
+            .space-grotesk-font {
+                font-family: "Space Grotesk", sans-serif;
+                font-optical-sizing: auto;
+                font-style: normal;
+            }
+        </style>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+<body>
+    <div class="flex flex-col items-center justify-items-center"></div>
+       <div class="my-40">
+          <p class="text-2xl font-bold text-center">Sign in to your account</p>
+          <form class="my-5 flex flex-col space-y-5" method="POST" action="" >
+                <div class="flex flex-col">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder="johndoe@gmail.com"/>
+                </div>
+                <div class="flex flex-col">
+                   <label for="password">Password</label>
+                       <input type="password" name="password" id="password" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder=""/>
+                </div>
+                <div class="flex justify-end">
+                      <button  class="bg-blue-500 text-white px-5 py-3 rounded-lg" onclick="location.href='/database'">Log in</button>
+                </div>
+            </form>
+       </div>
+    </div>
+</body>
+</html>

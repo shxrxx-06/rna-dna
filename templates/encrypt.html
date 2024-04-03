@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Database</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="flex">
+        <section class="w-96 h-screen flex flex-col justify-between">
+            <div class="mt-8 mx-5 text-xl">
+                <p class="font-bold">DNA & RNA</p>
+                <nav class="flex flex-col space-y-5 pl-5 mt-5">
+                    <a class="px-3 py-1" href="#">Home</a>
+                    <a class="px-3 py-1" href="#">Vault</a>
+                    <a class="bg-gray-200/80 px-3 py-1 rounded-lg" href="#">Encryption</a>
+                    <a class="px-3 py-1" href="#">Keys</a>
+                    <a class="px-3 py-1" href="#">Jobs</a>
+                    <a class="px-3 py-1" href="#">Settings</a>
+                </nav>
+            </div>
+            <div class="flex flex-col mx-5 text-xl space-y-3 my-8 pl-5">
+                <a class="px-3" href="#"><i class="fa-solid fa-plus"></i> New Database</a>
+                <a class="px-3" href="#"><i class="fa-solid fa-plus"></i> New Folder</a>
+            </div>
+        </section>
+        <section class="w-full h-screen text-xl">
+            <div class="my-40">
+                <p class="text-2xl font-bold text-center">Encrypt your DNA & RNA data</p>
+                <form class="my-5 flex flex-col space-y-5">
+                    <div class="flex flex-col">
+                        <label class="" for="data">You can encrypt your DNA and RNA data , using a unique encryption key.Encrypted data can be stored at safeDna for easy access , or downloaded and stored elsewhere</label>
+                        <input name="data" id="data" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-80" placeholder="Paste your DNA and/or RNA data here"/>
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    <button class="bg-blue-500 text-white px-5 py-3 rounded-lg">Start encryption</button>
+                </div>
+                <p class="text-2xl font-bold text-center">Note:SafeDNA doesn't store your encryption key.If you lose your key, you will not be able to access your encrypted data</p>
+                <div class="flex flex-col">
+                    <label for="encryptionKey">Encryption Key</label>
+                    <input name="encryptionKey" id="encryptionKey" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder="Generated encryption key" readonly />
+                  </div>
+                  
+                  <div class="flex flex-col mt-4">
+                    <label for="confirmEncryptionKey">Confirm Your Encryption Key</label>
+                    <input name="confirmEncryptionKey" id="confirmEncryptionKey" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder="Confirm encryption key" readonly />
+                  </div>
+                  
+                  <script>
+                    // Function to generate a random string of characters
+                    function generateEncryptionKey(length) {
+                      var result           = '';
+                      var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                      var charactersLength = characters.length;
+                      for ( var i = 0; i < length; i++ ) {
+                        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                      }
+                      return result;
+                    }
+                  
+                    // Set the generated string as the value of the input
+                    var generatedKey = generateEncryptionKey(10); // Generates a 10-character string
+                    document.getElementById('encryptionKey').value = generatedKey;
+                    document.getElementById('confirmEncryptionKey').value = generatedKey; // Copies the generated key to the confirm input
+                  </script>
+                    <div class="flex justify-end">
+                        <button class="bg-blue-500 text-white px-5 py-3 rounded-lg">  Save your encryption Key  </button>
+                    </div>
+                </form>
+        </section>
+    </div>
+</body>
+</html>
