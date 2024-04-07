@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, flash, render_template, request, redirect, session, url_for
 import re
 from flask_mysqldb import MySQL
 
@@ -45,10 +45,16 @@ def home():
         email=userDetails['email']
         password=userDetails['password']
         cur=mysql.connection.cursor()
-        cur.execute("INSERT INTO signup(first_name , last_name , email , password) VALUES(%s,%s,%s,%s)",(f_name,l_name,email,password))
-        mysql.connection.commit()
-        cur.close()
-        return redirect('/login')
+        cur.execute("SELECT * FROM signup WHERE email=%s",(email))
+        existing_user=cur.fectchone()
+        if existing_user:
+            flash ('Email already exists! Please use different email.')
+            return redirect('/signup')
+        else :
+            cur.execute("INSERT INTO signup(first_name , last_name , email , password) VALUES(%s,%s,%s,%s)",(f_name,l_name,email,password))
+            mysql.connection.commit()
+            cur.close()
+            return redirect('/login')
         
 
     return render_template('home.html', error=error)

@@ -13,12 +13,12 @@
             <div class="mt-8 mx-5 text-xl">
                 <p class="font-bold">DNA & RNA</p>
                 <nav class="flex flex-col space-y-5 pl-5 mt-5">
-                    <a class="px-3 py-1" href="#">Home</a>
-                    <a class="px-3 py-1" href="#">Vault</a>
-                    <a class="px-3 py-1" href="#">Encryption</a>
-                    <a class="px-3 py-1" href="#">Keys</a>
-                    <a class="px-3 py-1" href="#">Jobs</a>
-                    <a class="px-3 py-1" href="#">Settings</a>
+                    <a class="px-3 py-1" href="#" onclick="location.href='/home'">Home</a>
+                    <a class="bg-gray-200/80 px-3 py-1 rounded-lg" href="#" onclick="location.href='/va'">Vault</a>
+                    <a class="px-3 py-1" href="#" onclick="location.href='/encrypt'">Encryption</a>
+                    <a class="px-3 py-1" href="#" onclick="location.href='/encrypt'">Keys</a>
+                    <a class="px-3 py-1" href="#" onclick="location.href='/va'">Jobs</a>
+                    <a class="px-3 py-1" href="#" onclick="location.href='/va'">Settings</a>
                 </nav>
             </div>
             <div class="flex flex-col mx-5 text-xl space-y-3 my-8 pl-5">
@@ -33,7 +33,7 @@
                 <form class="my-5 flex flex-col space-y-5">
                     <div class="flex flex-col">
                         <label class="" for="project_name">Project Name</label>
-                        <input name="project_name" id="project_name" class="border-solid border-2 border-gray-200 rounded-lg px-3 h-10" placeholder="Project Name"/>
+                        <input name="project_name" id="project_name" class="border-solid border-2 border-gray-200 rounded-lg px-3 h-10" placeholder="Unique Project Name"/>
                     </div>
                     <div class="flex flex-col">
                         <label for="description">Description</label>
@@ -44,8 +44,8 @@
                         <input type="notes"  id="notes" class="border-solid border-2 border-gray-200 rounded-lg px-3 h-40" placeholder="Notes for the project"/>
                     </div>
                     <div class="flex flex-col">
-                        <label for="sequence_file">Sequence File</label>
-                        <input type="sequence_file"  id="sequence_file" class="border-solid border-2 border-gray-200 rounded-lg px-3 h-40" placeholder="Paste your sequence here"/>
+                        <label class="" for="file">You can encrypt your DNA and RNA data , using a unique encryption key.Encrypted data can be stored at safeDna for easy access , or downloaded and stored elsewhere</label>
+                        <input type="file" id="file"  placeholder="Upload your DNA and/or RNA data's sequence_file"/>
                     </div>
                     <div class="flex justify-center">
                         <button class="bg-blue-500 text-white px-5 py-3 rounded-lg" onclick="location.href='/encrypt'">Upload</button>
