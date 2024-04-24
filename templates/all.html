@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    <div class="my-5">
+        <nav class="flex flex-row space-x-5 my-2">
+            {% for project_name in project_names %}
+                <a class="font-bold" href="#">{{ project_name }}</a>
+            {% endfor %}
+        </nav>
+        <hr />
+    </div>    
+</body>
+</html>

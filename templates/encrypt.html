@@ -29,21 +29,54 @@
         <section class="w-full h-screen text-xl">
             <div class="my-40">
                 <p class="text-2xl font-bold text-center">Encrypt your DNA & RNA data</p>
-                <form class="my-5 flex flex-col space-y-5">
-                <p class="text-2xl font-bold text-center">Note:SafeDNA doesn't store your encryption key.If you lose your key, you will not be able to access your encrypted data</p>
-                <div class="flex flex-col">
-                    <label for="encryptionKey">Encryption Key</label>
-                    <input name="encryptionKey" id="encryptionKey" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder="Generated encryption key"  />
-                  </div>
+                <form class="my-5 flex flex-col space-y-5" id="uploadForm" enctype="multipart/form-data">
+                  <p class="text-2xl font-bold text-center">Note:SafeDNA doesn't store your encryption key.If you lose your key, you will not be able to access your encrypted data</p>
+                  <div class="flex flex-col">
+                      <label class="" for="file">You can encrypt your DNA and RNA data , using a unique encryption key.Encrypted data can be stored at safeDna for easy access , or downloaded and stored elsewhere</label>
+                      <input type="file" id="file" name="file" placeholder="Upload your DNA and/or RNA data's sequence_file" required/><br><br>
+                    </div>
+                    <div class="flex flex-col ">
+                       <label for="key">Encryption Key</label>
+                       <input type="text" id="key" name="key" required class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder="Generated encryption key"  />
+                    </div>
                   
-                  <div class="flex flex-col mt-4">
-                    <label for="confirmEncryptionKey">Confirm Your Encryption Key</label>
-                    <input name="confirmEncryptionKey" id="confirmEncryptionKey" class="border-solid border-2 border-gray-300 rounded-lg px-3 h-10" placeholder="Confirm encryption key"  />
-                  </div>
-                  <div class="flex justify-end">
-                        <button class="bg-blue-500 text-white px-5 py-3 rounded-lg">  Save your encryption Key  </button>
-                  </div>
+                    <div class="flex flex-col mt-4">
+                        <label for="keySize">Key Size</label>
+                        <select id="keySize" name="keySize" required>
+                            <option value="128">128</option>
+                            <option value="192">192</option>
+                            <option value="256">256</option>
+                        </select><br><br>
+                    </div>
+                    <div class="flex justify-end">
+                        <button class="bg-blue-500 text-white px-5 py-3 rounded-lg">Encrypt File</button>
+                    </div>
                 </form>
+                <div id="message"></div>
+
+                <script>
+                  document.getElementById('uploadForm').addEventListener('submit', function(event) {
+                        event.preventDefault();
+            
+                        var formData = new FormData();
+                        formData.append('file', document.getElementById('file').files[0]);
+                        formData.append('key', document.getElementById('key').value);
+                        formData.append('key_size', document.getElementById('keySize').value);
+            
+                        fetch('/upload', {
+                            method: 'POST',
+                            body: formData
+                        })
+
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('message').innerHTML = data.message;
+                        })
+                       .catch(error => {
+                          console.error('Error:', error);
+                        });
+                    });
+                </script>
         </section>
     </div>
 </body>

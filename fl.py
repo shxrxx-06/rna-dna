@@ -1,14 +1,25 @@
-from flask import Flask, flash, render_template, request, redirect, session, url_for
+from flask import Flask, flash, render_template, request, redirect, session, url_for, jsonify
 import re
 from flask_mysqldb import MySQL
+import mysql.connector
+from aes_program import encrypt_file, decrypt_file
+import pymysql
 
-app = Flask(__name__)
+# database connection
+connection = pymysql.connect(host="localhost:3306", user="geneprot_shara", passwd="@Shara#23@", database="geneprot_rnadna")
+
+cursor = connection.cursor()
+# some other statements with the help of cursor
+connection.close()
+
+
+
+app = Flask(__name__,template_folder="../Downloads")
+
+
+
 app.secret_key='6ede3c79f791dee2f4694d98ee678430'
-app.config['MYSQL_HOST']='localhost'
-app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='@Shara#23@'
-app.config['MYSQL_DB']='rna'
-mysql=MySQL(app)
+
 # Function to validate the email
 def is_valid_email(email):
     # Regular expression for validating an Email
@@ -40,11 +51,11 @@ def home():
             return redirect(url_for('account'))
     if request.method=='POST':
         userDetails=request.form
-        f_name=userDetails['first name']
-        l_name=userDetails['last name']
+        f_name=userDetails['first_name']
+        l_name=userDetails['last_name']
         email=userDetails['email']
         password=userDetails['password']
-        cur=mysql.connection.cursor()
+        cur=pymysql.connection.cursor()
         cur.execute("SELECT * FROM signup WHERE email=%s",(email))
         existing_user=cur.fectchone()
         if existing_user:
@@ -52,7 +63,7 @@ def home():
             return redirect('/signup')
         else :
             cur.execute("INSERT INTO signup(first_name , last_name , email , password) VALUES(%s,%s,%s,%s)",(f_name,l_name,email,password))
-            mysql.connection.commit()
+            pymysql.connection.commit()
             cur.close()
             return redirect('/login')
         
@@ -61,36 +72,93 @@ def home():
 
 @app.route('/database', methods=["GET", "POST"])
 def database_page():
+    if 'email' not in session:
+        return redirect('/login')
+
     if request.method == "POST":
         ...
-    elif request.method == "GET":
-        return render_template('database.html')
+    else:  # This covers the "GET" method
+        cur = pymysql.connection.cursor()
+        cur.execute("SELECT project_name FROM newdb")
+        project_names = cur.fetchall()
+        cur.close()
+        return render_template('all.html', project_names=project_names)
 
+@app.route('/all')
+def all():
+    return render_template('all.html')
 @app.route('/new', methods=["GET", "POST"])
 def new_page():
     if request.method == "POST":
-        ...
+        userDetails=request.form
+        p_name=userDetails['project_name']
+        description=userDetails['description']
+        notes=userDetails['notes']
+        cur=pymysql.connection.cursor()
+        cur.execute("INSERT INTO newdb(project_name , description , notes)VALUES(%s,%s,%s)",(p_name,description,notes))
+        pymysql.connection.commit()
+        cur.close()
+        return redirect('/encrypt')
     elif request.method == "GET":
         return render_template('new.html')
+    
+
+
 @app.route('/en', methods=["GET", "POST"])  
 def en_page():
     if request.method == "POST":
-        ...
+        file = request.files['file']
+        key = request.form['key']
+        key_size = int(request.form['key_size'])
+        # Save the uploaded file temporarily
+        file_path = r"C:\Users\Ranu Ramesh\Pictures\dna files"
+        file.save(file_path)
+
+        # Encrypt the file
+        encrypt_file(file_path, key, key_size)
+
+        # Return success message or redirect to another page
+        return jsonify({'message': 'File encrypted successfully'})
+        cur=mysql.connection.cursor()
+        cur.execute("INSERT INTO upload(encryption_key)VALUES(%s)",(key))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('list_files'))
+            
+
+
     elif request.method == "GET":
         return render_template('encrypt.html')
+
+@app.route('/decrypt', methods=['POST'])
+def decrypt_file():
+    # Handle file decryption
+    # Similar to file upload route but with decryption logic
+
+    return jsonify({'message': 'File decrypted successfully'})
+
 @app.route('/va', methods=["GET", "POST"])  
 def va_page():
     if request.method == "POST":
-        ...
+       ...
     elif request.method == "GET":
-        return render_template('va.html')
+        encryption_key = request.args.get('encryption_key')
+        
+    if file:
+        return render_template('files.html', files=[file])
+    elif not file:
+        return "No file found for the provided encryption key.", 404
+    return render_template('va.html')
+
+
+
 @app.route('/login' , methods=["GET","POST"])
 def login():
     if request.method=='POST':
         userDetails=request.form
         email=userDetails['email']
         password=userDetails['password']
-        cur=mysql.connection.cursor()
+        cur=pymysql.connection.cursor()
         cur.execute("SELECT * FROM signup WHERE email=%s AND password=%s", (email,password))
         user=cur.fetchall()
         if user:
@@ -112,20 +180,18 @@ def account():
         l_name=userDetails['last name']
         email=userDetails['email']
         password=userDetails['password']
-        cur=mysql.connection.cursor()
+        cur=pymysql.connection.cursor()
         cur.execute("INSERT INTO signup(first_name , last_name , email , password ) VALUES(%s,%s,%s,%s)",(f_name,l_name,email,password))
-        mysql.connection.commit()
+        pymysql.connection.commit()
         cur.close()
         return redirect('/login')
     return render_template('account.html')
 
-@app.route('/database')
-def db():
-    if 'email' in session :
-        return render_template('database.html')
-    else :
-        return redirect('/login')
-    
+
+@app.route('/sub')
+def sub():
+     return render_template('crip.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

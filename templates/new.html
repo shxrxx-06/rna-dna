@@ -33,20 +33,17 @@
                 <form class="my-5 flex flex-col space-y-5">
                     <div class="flex flex-col">
                         <label class="" for="project_name">Project Name</label>
-                        <input name="project_name" id="project_name" class="border-solid border-2 border-gray-200 rounded-lg px-3 h-10" placeholder="Unique Project Name"/>
+                        <input name="project_name" id="project_name" class="border-solid border-2 border-gray-200 rounded-lg px-3 h-10" placeholder="Unique Project Name(255 char)"/>
                     </div>
                     <div class="flex flex-col">
                         <label for="description">Description</label>
-                        <input name="description" id="description" class="border-solid border-2 border-gray-200 rounded-lg px-3 h-10" placeholder="Description for the project"/>
+                        <input name="description" id="description" class="border-solid border-2 border-gray-200 rounded-lg px-3 h-10" placeholder="Description for the project(255 char)"/>
                     </div>
                     <div class="flex flex-col">
                         <label for="notes">Notes</label>
                         <input type="notes"  id="notes" class="border-solid border-2 border-gray-200 rounded-lg px-3 h-40" placeholder="Notes for the project"/>
                     </div>
-                    <div class="flex flex-col">
-                        <label class="" for="file">You can encrypt your DNA and RNA data , using a unique encryption key.Encrypted data can be stored at safeDna for easy access , or downloaded and stored elsewhere</label>
-                        <input type="file" id="file"  placeholder="Upload your DNA and/or RNA data's sequence_file"/>
-                    </div>
+                    
                     <div class="flex justify-center">
                         <button class="bg-blue-500 text-white px-5 py-3 rounded-lg" onclick="location.href='/encrypt'">Upload</button>
                     </div>

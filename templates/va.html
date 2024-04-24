@@ -38,13 +38,25 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                             </svg>
                         </div>
-                        <input class="ps-10 w-full rounded-lg h-10 px-4 mt-4 bg-black-200/80 text-black" placeholder="Search for your encrypted data" />
+                        <input class="ps-10 w-full rounded-lg h-10 px-4 mt-4 bg-black-200/80 text-black" placeholder="Search for your encrypted data: Enter your encryption Key" />
                     </div>
                     <br>
-                    <div class="flex justify-end">
-                       <button class="text-white px-4 py-2 rounded-lg bg-blue-500">Fetch</button>
+                    <div class="flex justify-end" method="GET" action="">
+                       <button class="text-white px-4 py-2 rounded-lg bg-blue-500" onclick="location.href='/files'">Fetch</button>
                     </div>
-                </div>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-500 dark:text-gray-400 mt-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            </svg>
+                        </div>
+                        <input class="ps-10 w-full rounded-lg h-10 px-4 mt-4 bg-black-200/80 text-black" placeholder="Decrypt your data: Enter your encryption Key" />
+                    </div>
+                    <br>
+                    <div class="flex justify-end" method="GET" action="">
+                       <button class="text-white px-4 py-2 rounded-lg bg-blue-500" onclick="location.href=''">Decrypt</button>
+                    </div>
+                </div> 
             </div>
         </div>
         <br>
@@ -93,3 +105,7 @@
     </div>
 </body>
 </html>
+
+
+
+
