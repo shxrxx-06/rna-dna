@@ -3,10 +3,10 @@ import re
 from flask_mysqldb import MySQL
 import mysql.connector
 from aes_program import encrypt_file, decrypt_file
-import pymysql
 
-# database connection
-connection = pymysql.connect(host="localhost", user="geneprot", passwd="", database="geneprot_rnadna")
+
+# database iconnection
+connection = mysql.connect(host="localhost", user="geneprot", passwd="", database="geneprot_rnadna")
 
 cursor = connection.cursor()
 # some other statements with the help of cursor
@@ -55,7 +55,7 @@ def home():
         l_name=userDetails['last_name']
         email=userDetails['email']
         password=userDetails['password']
-        cur=pymysql.connection.cursor()
+        cur=mysql.connection.cursor()
         cur.execute("SELECT * FROM signup WHERE email=%s",(email))
         existing_user=cur.fectchone()
         if existing_user:
@@ -63,7 +63,7 @@ def home():
             return redirect('/signup')
         else :
             cur.execute("INSERT INTO signup(first_name , last_name , email , password) VALUES(%s,%s,%s,%s)",(f_name,l_name,email,password))
-            pymysql.connection.commit()
+            mysql.connection.commit()
             cur.close()
             return redirect('/login')
         
@@ -78,7 +78,7 @@ def database_page():
     if request.method == "POST":
         ...
     else:  # This covers the "GET" method
-        cur = pymysql.connection.cursor()
+        cur = mysql.connection.cursor()
         cur.execute("SELECT project_name FROM newdb")
         project_names = cur.fetchall()
         cur.close()
@@ -94,9 +94,9 @@ def new_page():
         p_name=userDetails['project_name']
         description=userDetails['description']
         notes=userDetails['notes']
-        cur=pymysql.connection.cursor()
+        cur=mysql.connection.cursor()
         cur.execute("INSERT INTO newdb(project_name , description , notes)VALUES(%s,%s,%s)",(p_name,description,notes))
-        pymysql.connection.commit()
+        mysql.connection.commit()
         cur.close()
         return redirect('/encrypt')
     elif request.method == "GET":
@@ -144,10 +144,7 @@ def va_page():
     elif request.method == "GET":
         encryption_key = request.args.get('encryption_key')
         
-    if file:
-        return render_template('files.html', files=[file])
-    elif not file:
-        return "No file found for the provided encryption key.", 404
+    
     return render_template('va.html')
 
 
@@ -158,7 +155,7 @@ def login():
         userDetails=request.form
         email=userDetails['email']
         password=userDetails['password']
-        cur=pymysql.connection.cursor()
+        cur=mysql.connection.cursor()
         cur.execute("SELECT * FROM signup WHERE email=%s AND password=%s", (email,password))
         user=cur.fetchall()
         if user:
@@ -180,9 +177,9 @@ def account():
         l_name=userDetails['last name']
         email=userDetails['email']
         password=userDetails['password']
-        cur=pymysql.connection.cursor()
+        cur=mysql.connection.cursor()
         cur.execute("INSERT INTO signup(first_name , last_name , email , password ) VALUES(%s,%s,%s,%s)",(f_name,l_name,email,password))
-        pymysql.connection.commit()
+        mysql.connection.commit()
         cur.close()
         return redirect('/login')
     return render_template('account.html')
