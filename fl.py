@@ -6,7 +6,7 @@ from aes_program import encrypt_file, decrypt_file
 
 
 # database iconnection
-connection = mysql.connector.connect(host="localhost", user="shara", passwd="@Shara#23@", database="rnadna")
+connection = mysql.connector.connect(host="RANU-RAMESH", user="root@localhost", passwd="@Shara#23@", database="rna")
 
 cursor = connection.cursor()
 # some other statements with the help of cursor
