@@ -33,6 +33,9 @@ def is_valid_email(email):
     else:
         return False
     
+@app.errorhandler(404)
+def invalid_route(e):
+    return render_template('home.html')
 @app.route('/', methods=['GET', 'POST'])
 def home():
     error = None
