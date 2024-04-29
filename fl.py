@@ -3,11 +3,13 @@ import re
 from flask_mysqldb import MySQL
 import mysql.connector
 from aes_program import encrypt_file, decrypt_file
+import os
 
 
 # database iconnection
-connection = mysql.connector.connect(host="localhost", user="root", passwd="@Shara#23@", database="rna")
 
+connection = mysql.connector.connect(host="localhost", user="root", passwd="@Shara#23@", database="rna")
+#postgres://root:TzwCkG6IlveUuY537sKxzrzz6qQDpaER@dpg-conu9ogcmk4c73adqq1g-a.oregon-postgres.render.com/rna
 
 cursor = connection.cursor()
 # some other statements with the help of cursor

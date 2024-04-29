@@ -1,7 +1,7 @@
-import pymysql
+import mysql
 
 # database connection
-connection = pymysql.connect(host="localhost:3306", user="geneprot_shara", passwd="@Shara#23@", database="geneprot_rnadna")
+connection = mysql.connect(host="localhost", user="root", passwd="@Shara#23@", database="rna")
 
 cursor = connection.cursor()
 # some other statements with the help of cursor
