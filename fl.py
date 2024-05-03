@@ -67,7 +67,7 @@ def all():
 @app.route('/new', methods=["GET", "POST"])
 def new_page():
     if request.method == "POST":
-       return redirect(url_for('encrypt'))
+       return redirect('en')
     return render_template('new.html')
 
 
